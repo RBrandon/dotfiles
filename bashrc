@@ -98,8 +98,8 @@ fi
 ## Begin custom commands
 
 # games
-alias starsector='( cd /home/brandon/Downloads/starsector/ \ 
-    primusrun /home/brandon/Downloads/starsector/starsector.sh )'
+alias starsector='cd /home/brandon/Downloads/starsector/ && \ 
+    primusrun /home/brandon/Downloads/starsector/starsector.sh '
 alias starfarer='starsector'
 
 alias freecol='freecol --no-intro'
