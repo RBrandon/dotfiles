@@ -12,13 +12,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Other plugin commands go here and will be installed by Vundle.
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 "Plugin 'bling/vim-airline'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'rdnetto/YCM-Generator'
 
 call vundle#end()
 filetype plugin indent on
@@ -27,6 +28,4 @@ filetype plugin indent on
 syntax enable
 set background=dark
 colorscheme solarized
-
-let g:ycm_global_ycm_extra_conf = '' " This should be temporary.
 
