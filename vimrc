@@ -2,6 +2,7 @@ set nocompatible
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set number
 
 " Vundle required options
 filetype off
