@@ -28,3 +28,5 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+let g:ycm_global_ycm_extra_conf = '' " This should be temporary.
+
