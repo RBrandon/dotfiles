@@ -1,0 +1,189 @@
+# Dungeon Crawl Stone Soup
+# rcfile for RBrandon
+
+# Go to 
+#http://s-z.org/neil/git/?p=crawl.git;a=blob;f=crawl-ref/docs/options_guide.txt;hb=HEAD 
+# to see all the options.
+
+# Lines starting with ':' are Lua scripts.
+# TODO: add Lua reference link.
+
+###################
+# General options #
+###################
+
+# Trying to cut down on lvl 27 YASDs
+
+:crawl.mpr("Play smart, go for wins, DON'T GO IN ZIGS")
+
+autofight_stop = 50
+hp_warning = 50
+
+# XXX: Something has changed here I think.
+show_more = false
+default_manual_training = true
+pickup_menu_limit = 1
+confirm_butcher = never
+
+# These are strategic things so color them so
+mc := menu_colour
+mc ^= inventory:cyan:scrolls? of (enchant|amnesia|magic mapping|recharging)
+
+## Notes and dump options
+user_note_prefix = N:
+note_items += rod, ego_arm, ego_weap
+# note_chat_messages = true
+dump_item_origins = artefacts, ego_arm, ego_weap, rods
+dump_order += vaults
+
+# Pause for transmutation renewal.
+runrest_stop_message += Your transformation is almost over
+
+# Why this forces a more prompt I will never know...
+message_colour += mute:Be careful
+
+######################
+# Autopickup options #
+######################
+
+# Default autopickup list for reference.
+# $?!+"\/%
+# $=gold ?=scrolls !=potions +=books "=jewelry /=wands %=food
+# } =miscellany |=staves
+# The default is picking up everything in the group if unidentified
+# Once identified, bad and dangerous items are no longer autopicked.
+
+autopickup = $?!+"\/%}|
+
+# Troglodytes don't care about staves
+: if you.god()=="Trog" then
+autopickup = $?!+"\/%}
+: end
+
+ae := autopickup_exceptions
+
+# This isn't too bad now that chunks stack by type.
+# ae += chunks? of .* flesh
+
+## Potions
+ae += potions? of (lignification|brilliance|flight)
+
+: if you.god()=="Trog" then
+ae += potions? of (magic|berserk)
+: end
+
+## Scrolls
+ae += scrolls? of vulnerability
+# ae += <scrolls? of immolation (I never seem to use these)
+ae += scrolls? of holy
+
+: if you.god()=="Trog" then
+ae += amnesia
+: end
+
+## Staves
+# This should catch already identified staves. You only need one.
+ae += staff of
+
+## Evokables
+
+# Wands that lose use without some power behind them
+: if you.xl() > 10 and you.skill("Evocations") < 10 then
+ae += wand of (confusion|enslavement|paralysis|polymorph)
+: end
+
+# Wands that are usually garbage
+ae += wand of (random effects|magic|flame|frost|slowing)
+
+# Decks. Always take legendary ones and look at Evo skill for ornate.
+# Not sure how much I like this. Even plain decks of wonders can be
+# interesting.
+
+ae += plain
+: if you.skill("Evocations") < 10 then
+ae += ornate
+: end
+# Legendary picked up by } in autopickup
+
+# Other misc. These are highly situational. In those situations I don't think
+# I'll mind picking them up manually.
+
+ae += crystal ball
+ae += lantern of shadow
+ae += disc of storm
+
+# Rods are in autopickup proper now
+# ae += <rod
+
+
+## Jewellry
+
+ae += ring of (fire|ice)
+
+# Some of this stuff really should be default...
+
+: if you.god()=="Trog" then
+ae += ring of (magical|wizardry)
+: end
+
+## Special cases
+
+# Scrolls of Torment are almost always good for undead guys.
+# Except vampires. Vampires suck at everything, including being undead.
+: if you.race()=="Ghoul" or you.race()=="Mummy" -- or you.race()=="Vampire"
+: then
+ae += <scroll of torment
+:end
+
+
+#################
+# Autoinscribes #
+#################
+
+ai := autoinscribe
+
+## <3 Pedroff
+ai += Wucad:Pedroff's Sif-in-a-Stick
+ai += eudemon:The Shining One Sausage Stick
+ai += sacred:The Shining One Swag
+
+## For playing in the dark :)
+ai += (potion|scroll|wand|armour|ring|book|ammo|amulet):!w
+ai += (bread|meat|fruit|jelly|jerky|chunk):!w
+
+## Food shortcuts
+# Can these overlap?
+ai += meat:@e1
+ai += bread:@e1
+ai += jelly:@e1
+ai += fruit:@e2
+ai += jerky:@e2
+
+
+## Rods are almost never good for melee.
+# (This includes rods of striking, ha)
+# Most other useless melee things prompt for this already.
+ai += rod:!a
+
+## Same goes for non-evokable staves
+ai += staff of (wizardry|energy|power):!a
+
+###################
+# Safety messages #
+###################
+
+fmm := force_more_message
+
+# Normal day-ruiners
+fmm += .*(statues?) comes? into view
+fmm += (caustic shrike|orb of fire|lich).*come
+fmm += juggernaut.*come
+
+# Death's door expiration
+fmm += time is quickly running out
+
+# Dangerous uniques (XXX: try to find something that grabs all uniques)
+# Or organize dangerous uniques by area
+fmm += (Mara|Nikola|Rupert|Frederick|Margery|Boris|Mennas).*come
+fmm += (Illisw|Sigmund|Grinder|Norris|Saint Roka|Roxanne).*come
+
