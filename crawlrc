@@ -29,7 +29,7 @@ default_manual_training = true
 pickup_menu_limit = 1
 confirm_butcher = never
 
-# These are strategic things so color them so
+# These are strategic things; color them so
 mc := menu_colour
 mc ^= inventory:cyan:scrolls? of (enchant|amnesia|magic mapping|recharging)
 
@@ -54,8 +54,6 @@ message_colour += mute:Be careful
 # $?!+"\/%
 # $=gold ?=scrolls !=potions +=books "=jewelry /=wands %=food
 # } =miscellany |=staves
-# The default is picking up everything in the group if unidentified
-# Once identified, bad and dangerous items are no longer autopicked.
 
 autopickup = $?!+"\/%|
 
@@ -122,7 +120,6 @@ ai += eudemon:The Shining One Sausage Stick
 ai += sacred:The Shining One Swag
 
 ## Food shortcuts
-# Can these overlap?
 ai += meat:@e1
 ai += bread:@e1
 ai += jelly:@e1
