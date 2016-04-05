@@ -61,7 +61,7 @@ autopickup = $?!+"\/%|
 
 # Troglodytes don't care about staves
 : if you.god()=="Trog" then
-autopickup = $?!+"\/%}
+autopickup = $?!"\/%
 : end
 
 ae := autopickup_exceptions
