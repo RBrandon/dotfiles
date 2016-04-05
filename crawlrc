@@ -136,7 +136,7 @@ ai += jerky:@e2
 fmm := force_more_message
 
 # Normal day-ruiners
-fmm += .*(statues?) comes? into view
+fmm += .*(statues?).*come
 fmm += (caustic shrike|orb of fire|lich).*come
 fmm += juggernaut.*come
 
@@ -147,4 +147,5 @@ fmm += time is quickly running out
 # Or organize dangerous uniques by area
 fmm += (Mara|Nikola|Rupert|Frederick|Margery|Boris|Mennas).*come
 fmm += (Illisw|Sigmund|Grinder|Norris|Saint Roka|Roxanne).*come
+fmm += (Menkaure|Khufu|Xtahua|Frances|Nergalle|Enchantress).*come
 
