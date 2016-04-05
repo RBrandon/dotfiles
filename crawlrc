@@ -42,6 +42,10 @@ runrest_stop_message += Your transformation is almost over
 # Why this forces a more prompt I will never know...
 message_colour += mute:Be careful
 
+# This is mandatory to make shoals playable for some reason...
+message_colour += mute:Splash!
+message_colour += mute:You fall into the shallow
+
 ######################
 # Autopickup options #
 ######################
