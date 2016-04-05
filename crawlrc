@@ -104,7 +104,6 @@ ae += ring of (magical|wizardry)
 ## Special cases
 
 # Scrolls of Torment are almost always good for undead guys.
-# Except vampires. Vampires suck at everything, including being undead.
 : if you.race()=="Ghoul" or you.race()=="Mummy" -- or you.race()=="Vampire"
 : then
 ae += <scroll of torment
