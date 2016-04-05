@@ -2,8 +2,11 @@
 # rcfile for RBrandon
 
 # Go to 
-#http://s-z.org/neil/git/?p=crawl.git;a=blob;f=crawl-ref/docs/options_guide.txt;hb=HEAD 
+# http://s-z.org/neil/git/?p=crawl.git;a=blob;f=crawl-ref/docs/options_guide.txt;hb=HEAD 
 # to see all the options.
+
+# Most up to date version should be kept at
+# https://github.com/RBrandon/dotfiles
 
 # Lines starting with ':' are Lua scripts.
 # TODO: add Lua reference link.
