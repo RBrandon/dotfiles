@@ -15,10 +15,6 @@
 # General options #
 ###################
 
-# Trying to cut down on lvl 27 YASDs
-
-:crawl.mpr("Play smart, go for wins, DON'T GO IN ZIGS")
-
 autofight_stop = 50
 hp_warning = 50
 autofight_fire_stop = true
