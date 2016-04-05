@@ -57,7 +57,7 @@ message_colour += mute:Be careful
 # The default is picking up everything in the group if unidentified
 # Once identified, bad and dangerous items are no longer autopicked.
 
-autopickup = $?!+"\/%}|
+autopickup = $?!+"\/%|
 
 # Troglodytes don't care about staves
 : if you.god()=="Trog" then
@@ -65,9 +65,6 @@ autopickup = $?!+"\/%}
 : end
 
 ae := autopickup_exceptions
-
-# This isn't too bad now that chunks stack by type.
-# ae += chunks? of .* flesh
 
 ## Potions
 ae += potions? of (lignification|brilliance|flight)
@@ -91,34 +88,8 @@ ae += staff of
 
 ## Evokables
 
-# Wands that lose use without some power behind them
-: if you.xl() > 10 and you.skill("Evocations") < 10 then
-ae += wand of (confusion|enslavement|paralysis|polymorph)
-: end
-
 # Wands that are usually garbage
 ae += wand of (random effects|magic|flame|frost|slowing)
-
-# Decks. Always take legendary ones and look at Evo skill for ornate.
-# Not sure how much I like this. Even plain decks of wonders can be
-# interesting.
-
-ae += plain
-: if you.skill("Evocations") < 10 then
-ae += ornate
-: end
-# Legendary picked up by } in autopickup
-
-# Other misc. These are highly situational. In those situations I don't think
-# I'll mind picking them up manually.
-
-ae += crystal ball
-ae += lantern of shadow
-ae += disc of storm
-
-# Rods are in autopickup proper now
-# ae += <rod
-
 
 ## Jewellry
 
