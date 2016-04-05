@@ -121,10 +121,6 @@ ai += Wucad:Pedroff's Sif-in-a-Stick
 ai += eudemon:The Shining One Sausage Stick
 ai += sacred:The Shining One Swag
 
-## For playing in the dark :)
-ai += (potion|scroll|wand|armour|ring|book|ammo|amulet):!w
-ai += (bread|meat|fruit|jelly|jerky|chunk):!w
-
 ## Food shortcuts
 # Can these overlap?
 ai += meat:@e1
@@ -132,15 +128,6 @@ ai += bread:@e1
 ai += jelly:@e1
 ai += fruit:@e2
 ai += jerky:@e2
-
-
-## Rods are almost never good for melee.
-# (This includes rods of striking, ha)
-# Most other useless melee things prompt for this already.
-ai += rod:!a
-
-## Same goes for non-evokable staves
-ai += staff of (wizardry|energy|power):!a
 
 ###################
 # Safety messages #
