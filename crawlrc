@@ -35,6 +35,8 @@ note_items += rod, ego_arm, ego_weap
 # note_chat_messages = true
 dump_item_origins = artefacts, ego_arm, ego_weap, rods
 dump_order += vaults
+dump_order += turns_by_place
+dump_order += kills_by_place
 
 # Pause for transmutation renewal.
 runrest_stop_message += Your transformation is almost over
