@@ -9,7 +9,8 @@
 # https://github.com/RBrandon/dotfiles
 
 # Lines starting with ':' are Lua scripts.
-# TODO: add Lua reference link.
+# Lua manual:
+# http://www.lua.org/manual/5.1/manual.html
 
 ###################
 # General options #
