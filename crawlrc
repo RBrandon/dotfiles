@@ -58,39 +58,34 @@ message_colour += mute:You fall into the shallow
 # $=gold ?=scrolls !=potions +=books "=jewelry /=wands %=food
 # } =miscellany |=staves
 
-autopickup = $?!+"\/%|
+autopickup = $?!+"\/%|}
 
 # Troglodytes don't care about staves
 : if you.god()=="Trog" then
-autopickup = $?!"\/%
+autopickup = $?!"\/%}
 : end
 
 ae := autopickup_exceptions
 
 ## Potions
-ae += potions? of (lignification|brilliance|flight)
+ae += potions? of (lignification|flight)
 
 : if you.god()=="Trog" then
-ae += potions? of (magic|berserk)
+ae += potions? of (magic|berserk|brilliance)
 : end
 
 ## Scrolls
 ae += scrolls? of vulnerability
-# ae += <scrolls? of immolation (I never seem to use these)
 ae += scrolls? of holy
 
 : if you.god()=="Trog" then
 ae += amnesia
 : end
 
-## Staves
-# This should catch already identified staves. You only need one.
-ae += staff of
-
 ## Evokables
 
 # Wands that are usually garbage
-ae += wand of (random effects|magic|flame|frost|slowing)
+ae += wand of (random effects|flame|slowing)
 
 ## Jewellry
 
