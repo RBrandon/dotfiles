@@ -19,8 +19,6 @@
 autofight_stop = 50
 hp_warning = 50
 autofight_fire_stop = true
-
-# XXX: Something has changed here I think.
 show_more = false
 default_manual_training = true
 pickup_menu_limit = 1
