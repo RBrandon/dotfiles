@@ -31,7 +31,7 @@ mc ^= inventory:cyan:scrolls? of (enchant|amnesia|magic mapping|recharging)
 ## Notes and dump options
 user_note_prefix = N:
 note_items += rod, ego_arm, ego_weap
-# note_chat_messages = true
+note_chat_messages = true
 dump_item_origins = artefacts, ego_arm, ego_weap, rods
 dump_order += vaults
 dump_order += turns_by_place
