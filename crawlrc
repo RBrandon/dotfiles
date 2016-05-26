@@ -56,11 +56,15 @@ message_colour += mute:You fall into the shallow
 # $=gold ?=scrolls !=potions +=books "=jewelry /=wands %=food
 # } =miscellany |=staves
 
-autopickup = $?!+"\/%|}
+autopickup = $?!+"\/%
+
+# XXX: Autopickup for miscellany is of dubious value and staff autopickup
+# works quite poorly by default. They will both need some rules to work
+# passably well.
 
 # Troglodytes don't care about staves
 : if you.god()=="Trog" then
-autopickup = $?!"\/%}
+autopickup = $?!"\/%
 : end
 
 ae := autopickup_exceptions
