@@ -23,10 +23,11 @@ show_more = false
 default_manual_training = true
 pickup_menu_limit = 1
 confirm_butcher = never
+auto_butcher = true
 
 # These are strategic things; color them so
 mc := menu_colour
-mc ^= inventory:cyan:scrolls? of (enchant|amnesia|magic mapping|recharging)
+mc ^= inventory:cyan:scrolls? of (enchant|amnesia|magic mapping)
 
 ## Notes and dump options
 user_note_prefix = N:
@@ -37,8 +38,11 @@ dump_order += vaults
 dump_order += turns_by_place
 dump_order += kills_by_place
 
-# Pause for transmutation renewal.
+# Pause for transmutation renewal
 runrest_stop_message += Your transformation is almost over
+
+# Don't pause for Ozo's renewal (both messages)
+runrest_ignore_message += icy armour
 
 # Why this forces a more prompt I will never know...
 message_colour += mute:Be careful
@@ -56,16 +60,10 @@ message_colour += mute:You fall into the shallow
 # $=gold ?=scrolls !=potions +=books "=jewelry /=wands %=food
 # } =miscellany |=staves
 
-autopickup = $?!+"\/%
+autopickup = $?!+"\/%}
 
-# XXX: Autopickup for miscellany is of dubious value and staff autopickup
-# works quite poorly by default. They will both need some rules to work
-# passably well.
-
-# Troglodytes don't care about staves
-: if you.god()=="Trog" then
-autopickup = $?!"\/%
-: end
+# Most miscellaneous things are useful for most characters now
+# (Theoretically)
 
 ae := autopickup_exceptions
 
@@ -77,8 +75,7 @@ ae += potions? of (magic|berserk|brilliance)
 : end
 
 ## Scrolls
-ae += scrolls? of vulnerability
-ae += scrolls? of holy
+ae += scrolls? of (vulnerability|holy|immolation)
 
 : if you.god()=="Trog" then
 ae += amnesia
@@ -86,14 +83,12 @@ ae += amnesia
 
 ## Evokables
 
-# Wands that are usually garbage
-ae += wand of (random effects|flame|slowing)
+# Wand stacking may make this rule moot
+# ae += wand of (random effects|flame)
 
 ## Jewellry
 
 ae += ring of (fire|ice)
-
-# Some of this stuff really should be default...
 
 : if you.god()=="Trog" then
 ae += ring of (magical|wizardry)
@@ -102,7 +97,7 @@ ae += ring of (magical|wizardry)
 ## Special cases
 
 # Scrolls of Torment are almost always good for undead guys.
-: if you.race()=="Ghoul" or you.race()=="Mummy" -- or you.race()=="Vampire"
+: if you.race()=="Ghoul" or you.race()=="Mummy" --or you.race()=="Vampire"
 : then
 ae += <scroll of torment
 :end
@@ -120,11 +115,9 @@ ai += eudemon:The Shining One Sausage Stick
 ai += sacred:The Shining One Swag
 
 ## Food shortcuts
-ai += meat:@e1
-ai += bread:@e1
-ai += jelly:@e1
-ai += fruit:@e2
-ai += jerky:@e2
+# 0.20 note: maybe eventually food will be boring enough to remove
+# 0.21 note: Food became boring enough to remove!
+ai += ration:@e1
 
 ###################
 # Safety messages #
@@ -136,13 +129,18 @@ fmm := force_more_message
 fmm += .*(statues?).*come
 fmm += (caustic shrike|orb of fire|lich).*come
 fmm += juggernaut.*come
+fmm += (siren|avatar)).*come
+fmm += (sentinel|warden).*come
 
 # Death's door expiration
 fmm += time is quickly running out
 
 # Dangerous uniques (XXX: try to find something that grabs all uniques)
 # Or organize dangerous uniques by area
-fmm += (Mara|Nikola|Rupert|Frederick|Margery|Boris|Mennas).*come
-fmm += (Illisw|Sigmund|Grinder|Norris|Saint Roka|Roxanne).*come
-fmm += (Menkaure|Khufu|Xtahua|Frances|Nergalle|Enchantress).*come
+# fmm += (Mara|Nikola|Rupert|Frederick|Margery|Boris|Mennas).*come
+# fmm += (Illisw|Sigmund|Grinder|Norris|Saint Roka|Roxanne).*come
+# fmm += (Menkaure|Khufu|Xtahua|Frances|Nergalle|Enchantress).*come
+
+# Let's see if this works
+fmm += [A-Z]\w{2,}.*come
 
