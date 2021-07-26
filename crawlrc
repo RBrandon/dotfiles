@@ -23,26 +23,22 @@ show_more = false
 default_manual_training = true
 pickup_menu_limit = 1
 confirm_butcher = never
-auto_butcher = true
 
 # These are strategic things; color them so
 mc := menu_colour
 mc ^= inventory:cyan:scrolls? of (enchant|amnesia|magic mapping)
 
 ## Notes and dump options
-user_note_prefix = N:
-note_items += rod, ego_arm, ego_weap
+user_note_prefix = ::
+note_items += ego_arm, ego_weap
 note_chat_messages = true
-dump_item_origins = artefacts, ego_arm, ego_weap, rods
+dump_item_origins = artefacts, ego_arm, ego_weap
 dump_order += vaults
 dump_order += turns_by_place
 dump_order += kills_by_place
 
 # Pause for transmutation renewal
 runrest_stop_message += Your transformation is almost over
-
-# Don't pause for Ozo's renewal (both messages)
-runrest_ignore_message += icy armour
 
 # Why this forces a more prompt I will never know...
 message_colour += mute:Be careful
@@ -60,15 +56,12 @@ message_colour += mute:You fall into the shallow
 # $=gold ?=scrolls !=potions +=books "=jewelry /=wands %=food
 # } =miscellany |=staves
 
-autopickup = $?!+"\/%}
-
-# Most miscellaneous things are useful for most characters now
-# (Theoretically)
+autopickup = $?!+"\/|
 
 ae := autopickup_exceptions
 
 ## Potions
-ae += potions? of (lignification|flight)
+ae += potions? of flight
 
 : if you.god()=="Trog" then
 ae += potions? of (magic|berserk|brilliance)
@@ -83,21 +76,20 @@ ae += amnesia
 
 ## Evokables
 
-# Wand stacking may make this rule moot
-# ae += wand of (random effects|flame)
-
 ## Jewellry
 
-ae += ring of (fire|ice)
+# Some of this stuff really should be default...
 
 : if you.god()=="Trog" then
 ae += ring of (magical|wizardry)
+ae += potion of brilliance
+
 : end
 
 ## Special cases
 
 # Scrolls of Torment are almost always good for undead guys.
-: if you.race()=="Ghoul" or you.race()=="Mummy" --or you.race()=="Vampire"
+: if you.race()=="Ghoul" or you.race()=="Mummy" or you.race()=="Vampire"
 : then
 ae += <scroll of torment
 :end
@@ -117,7 +109,6 @@ ai += sacred:The Shining One Swag
 ## Food shortcuts
 # 0.20 note: maybe eventually food will be boring enough to remove
 # 0.21 note: Food became boring enough to remove!
-ai += ration:@e1
 
 ###################
 # Safety messages #
@@ -129,8 +120,15 @@ fmm := force_more_message
 fmm += .*(statues?).*come
 fmm += (caustic shrike|orb of fire|lich).*come
 fmm += juggernaut.*come
-fmm += (siren|avatar)).*come
+fmm += (siren|avatar).*come
 fmm += (sentinel|warden).*come
+
+# Additional paralyzers
+fmm += (vampire knight|fenstrider|ogre mage|orc sorcerer|sphinx).*come
+fmm += (great orb|floating eye).*come
+
+# Banishers
+fmm += (wizard|demonologist|elf sorcerer).*come
 
 # Death's door expiration
 fmm += time is quickly running out
@@ -143,4 +141,3 @@ fmm += time is quickly running out
 
 # Let's see if this works
 fmm += [A-Z]\w{2,}.*come
-
