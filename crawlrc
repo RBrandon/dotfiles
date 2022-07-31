@@ -2,7 +2,7 @@
 # rcfile for RBrandon
 
 # Go to 
-# http://s-z.org/neil/git/?p=crawl.git;a=blob;f=crawl-ref/docs/options_guide.txt;hb=HEAD 
+# https://github.com/crawl/crawl/blob/master/crawl-ref/docs/options_guide.txt 
 # to see all the options.
 
 # Most up to date version should be kept at
@@ -18,7 +18,6 @@
 
 autofight_stop = 50
 hp_warning = 50
-autofight_fire_stop = true
 show_more = false
 default_manual_training = true
 pickup_menu_limit = 1
@@ -56,7 +55,7 @@ message_colour += mute:You fall into the shallow
 # $=gold ?=scrolls !=potions +=books "=jewelry /=wands %=food
 # } =miscellany |=staves
 
-autopickup = $?!+"\/|
+autopickup = $?!+"\/}
 
 ae := autopickup_exceptions
 
